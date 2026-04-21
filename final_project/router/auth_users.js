@@ -72,7 +72,10 @@ regd_users.put("/auth/review/:isbn", (req, res) => {
     }
 
     books[isbn] = book; // Update book details in 'books' object
-    res.send("Book with isbn " + isbn + " updated.");
+    return res.json({
+      message: `Book with isbn ${isbn} updated`,
+      book: book,
+    });
   } else {
     res.send("Unable to find book!");
   }
@@ -91,7 +94,10 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
     }
 
     books[isbn] = book;
-    res.send("Book with isbn " + isbn + " deleted.");
+    return res.json({
+      message: `Book with isbn ${isbn} deleted`,
+      book: book,
+    });
   } else {
     res.send("Unable to find book!");
   }
